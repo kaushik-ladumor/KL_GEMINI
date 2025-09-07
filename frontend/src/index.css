@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+
+/* Add this CSS to your global stylesheet (index.css or App.css) */
+
+/* Hide scrollbars for webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Hide scrollbars for Firefox */
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Custom scrollbar-none class for Tailwind compatibility */
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Ensure smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Make sure all containers hide scrollbars */
+body,
+#root,
+.chat-container,
+.sidebar-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+.chat-container::-webkit-scrollbar,
+.sidebar-container::-webkit-scrollbar {
+    display: none;
+}
