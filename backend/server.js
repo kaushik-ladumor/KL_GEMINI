@@ -13,16 +13,26 @@ DbConnection();
 
 // Middleware
 app.use(express.json());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://kl-gemini-57fp.vercel.app",
+  "https://kl-gemini-57fp-git-main-kaushik-ladumors-projects.vercel.app",
+  "https://kl-gemini-57fp-dp2o18bii-kaushik-ladumors-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://kl-gemini-57fp.vercel.app/",
-      "https://kl-gemini-57fp-git-main-kaushik-ladumors-projects.vercel.app/",
-      "https://kl-gemini-57fp-dp2o18bii-kaushik-ladumors-projects.vercel.app/",
-    ],
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps, curl, Postman)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
     credentials: true,
+    methods: ["GET", "POST", "DELETE", "PUT"],
   })
 );
 
