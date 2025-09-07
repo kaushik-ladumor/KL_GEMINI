@@ -27,7 +27,7 @@ function Sidebar() {
 
   const getAllThread = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}api/thread`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/thread`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -61,7 +61,7 @@ function Sidebar() {
     setThreadId(newThreadId);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}api/thread/${newThreadId}`,
+        `${import.meta.env.VITE_API_URL}/api/thread/${newThreadId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -79,7 +79,7 @@ function Sidebar() {
   const deleteThread = async (delThreadId) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}api/thread/${delThreadId}`,
+        `${import.meta.env.VITE_API_URL}/api/thread/${delThreadId}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
