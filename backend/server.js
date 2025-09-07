@@ -15,11 +15,19 @@ DbConnection();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://kl-gemini-web-app.vercel.app/", "https://kl-gemini-web-app-git-main-kaushik-ladumors-projects.vercel.app/", "https://kl-gemini-web-48rtq7i5s-kaushik-ladumors-projects.vercel.app/"],
+    origin: [
+      "http://localhost:5173",
+      "https://kl-gemini-web-app.vercel.app",
+      "https://kl-gemini-web-app-git-main-kaushik-ladumors-projects.vercel.app",
+      "https://kl-gemini-web-48rtq7i5s-kaushik-ladumors-projects.vercel.app",
+    ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
 );
+
+app.options("*", cors());
+
 
 // Test route
 app.get("/", (req, res) => {
