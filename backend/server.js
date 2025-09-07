@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import DbConnection from "./init/database.js";
 import chatRoutes from "./routes/chat.js";
 
-dotenv.config(); // load .env variables
+dotenv.config(); // Only works locally
 
 const app = express();
 
@@ -28,7 +28,6 @@ app.use(
 
 app.options("*", cors());
 
-
 // Test route
 app.get("/", (req, res) => {
   res.send("Server is running 🚀");
@@ -37,9 +36,6 @@ app.get("/", (req, res) => {
 // Chat routes
 app.use("/api", chatRoutes);
 
-// Server listen
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`✅ Server is listening on port ${PORT}`);
-});
-
+// ❌ Remove app.listen()
+// Export app for serverless deployment
+export default app;
